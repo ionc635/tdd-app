@@ -20,18 +20,18 @@ describe("Product Controller Create", () => {
   it("should have a createProduct function", () => {
     expect(typeof productController.createProduct).toBe("function");
   });
-  it("should call productModel.create", () => {
-    productController.createProduct(req, res, next);
+  it("should call productModel.create", async () => {
+    await productController.createProduct(req, res, next);
     expect(productModel.create).toBeCalledWith(newProduct);
   });
-  it("should return 201 response code", () => {
-    productController.createProduct(req, res, next);
+  it("should return 201 response code", async () => {
+    await productController.createProduct(req, res, next);
     expect(res.statusCode).toBe(201);
     expect(res._isEndCalled()).toBeTruthy();
   });
-  it("should return json body in response", () => {
+  it("should return json body in response", async () => {
     productModel.create.mockReturnValue(newProduct);
-    productController.createProduct(req, res, next);
+    await productController.createProduct(req, res, next);
     expect(res._getJSONData()).toStrictEqual(newProduct);
   });
 });
