@@ -49,10 +49,10 @@ describe("Product Controller Create", () => {
 
 describe("Product Controller Get", () => {
   it("should have a getProducts function", () => {
-    expect(typeof productController.getProduct).toBe("function");
+    expect(typeof productController.getProducts).toBe("function");
   });
   it("should call ProductModel.find({})", async () => {
-    await productController.getProduct(req, res, next);
+    await productController.getProducts(req, res, next);
     expect(productModel.find).toHaveBeenCalledWith({});
   });
   it("should return 200 response", async () => {
